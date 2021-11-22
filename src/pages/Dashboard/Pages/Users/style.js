@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 export const UserBox = styled.div`
     width: 100%;
-    height: 8vh;
+    height: 80px;
     border-radius: 10px;
     display: flex;
     align-items: center;

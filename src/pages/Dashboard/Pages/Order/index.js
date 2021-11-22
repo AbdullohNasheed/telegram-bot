@@ -31,6 +31,11 @@ function OrderPage() {
       <ProdoctsBox>
         <Table>
           <Tr>
+          <Td>
+            <ImgBox>
+              <Img src={Image} />
+            </ImgBox>
+          </Td>
             <Td>Lavash</Td>
             <Td>25000</Td>
             <Td>
@@ -57,6 +62,11 @@ function OrderPage() {
           {/* Product component */}
           <Table>
             <Tr>
+              <Td>
+                <ImgBox>
+                  <Img src={Image} />
+                </ImgBox>
+              </Td>
               <Td>Lavash</Td>
               <Td>25000</Td>
               <Td>
@@ -74,7 +84,7 @@ function OrderPage() {
             <Tr>
               <Td>
                 <ImgBox>
-                  <Img src={Image}/>
+                  <Img src={Image} />
                 </ImgBox>
               </Td>
               <Td>Lavash</Td>
@@ -92,9 +102,9 @@ function OrderPage() {
           {/* Product component */}
           <Table>
             <Tr>
-            <ImgBox>
-                  <Img src={Image}/>
-                </ImgBox>
+              <ImgBox>
+                <Img src={Image} />
+              </ImgBox>
               <Td>Lavash</Td>
               <Td>25000</Td>
               <Td>
@@ -110,9 +120,9 @@ function OrderPage() {
           {/* Product component */}
           <Table>
             <Tr>
-            <ImgBox>
-                  <Img src={Image}/>
-                </ImgBox>
+              <ImgBox>
+                <Img src={Image} />
+              </ImgBox>
               <Td>Lavash</Td>
               <Td>25000</Td>
               <Td>
@@ -128,6 +138,11 @@ function OrderPage() {
           {/* Product component */}
           <Table>
             <Tr>
+              <Td>
+                <ImgBox>
+                  <Img src={Image} />
+                </ImgBox>
+              </Td>
               <Td>Lavash</Td>
               <Td>25000</Td>
               <Td>

@@ -36,7 +36,7 @@ export const Img = styled.img`
 export const ProdoctsBox = styled.div`
   display: flex;
   width: 100%;
-  height: 10vh;
+  height: 80px;
   border-radius: 10px;
   margin-top: 15px;
   align-items: center;

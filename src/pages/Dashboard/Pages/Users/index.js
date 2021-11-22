@@ -1,5 +1,6 @@
-import React from "react";
-import Image from"../../../../assests/wp2803554.jpeg"
+import React, { useEffect, useState } from "react";
+import Image from "../../../../assests/wp2803554.jpeg"
+import { requests } from "../../../../api/requests";
 import {
   Container,
   UserBox,
@@ -15,83 +16,48 @@ import {
 } from "./style";
 
 function UsersPage() {
+  const [users, setUsers] = useState([])
+  let effect = async () => {
+    try {
+      let res = await requests.users.getUsers()
+      setUsers(res.data)
+    } catch (error) {
+
+    }
+  }
+  useEffect(() => {
+    effect()
+  }, [])
+
   return (
     <Container>
-      <UserBox>
-        <Table>
-          <Td>
-            <Tr>
-              <TrBox>
-                <ImgBox>
-                <Img src={Image}/>
-                </ImgBox>
-              </TrBox>
-            </Tr>
-          </Td>
-          <Td>
+      {users.map(e => {
+        return <UserBox>
+          <Table>
+            <Td>
               <Tr>
-              <Users>
-                  <Name>Stive Jobs</Name>
+                <TrBox>
+                  <ImgBox>
+                    <Img src={e.image_url} />
+                  </ImgBox>
+                </TrBox>
+              </Tr>
+            </Td>
+            <Td>
+              <Tr>
+                <Users>
+                  <Name>{e.first_name} {e.last_name}</Name>
                 </Users>
               </Tr>
-          </Td>
-          <Td>
-            <Tr>
-            <Nuber>+998(99) 859 59 37</Nuber>
-            </Tr>
-          </Td>
-        </Table>
-      </UserBox>
-      <UserBox>
-        <Table>
-          <Td>
-            <Tr>
-              <TrBox>
-                <ImgBox>
-                <Img src={Image}/>
-                </ImgBox>
-              </TrBox>
-            </Tr>
-          </Td>
-          <Td>
+            </Td>
+            <Td>
               <Tr>
-              <Users>
-                  <Name>Stive Jobs</Name>
-                </Users>
+                <Nuber>{e.phone}</Nuber>
               </Tr>
-          </Td>
-          <Td>
-            <Tr>
-            <Nuber>+998(99) 859 59 37</Nuber>
-            </Tr>
-          </Td>
-        </Table>
-      </UserBox>
-      <UserBox>
-        <Table>
-          <Td>
-            <Tr>
-              <TrBox>
-                <ImgBox>
-                <Img src={Image}/>
-                </ImgBox>
-              </TrBox>
-            </Tr>
-          </Td>
-          <Td>
-              <Tr>
-              <Users>
-                  <Name>Stive Jobs</Name>
-                </Users>
-              </Tr>
-          </Td>
-          <Td>
-            <Tr>
-            <Nuber>+998(99) 859 59 37</Nuber>
-            </Tr>
-          </Td>
-        </Table>
-      </UserBox>
+            </Td>
+          </Table>
+        </UserBox>
+      })}
     </Container>
   );
 }

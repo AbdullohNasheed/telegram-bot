@@ -27,6 +27,9 @@ export const ImgBoxx = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const Input = styled.input`
+  display: hidden;
+`
 export const Img = styled.img`
   width: 13em;
   height: 13em;
