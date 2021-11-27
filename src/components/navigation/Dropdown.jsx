@@ -1,5 +1,5 @@
 import "../../pages/Dashboard/Pages/News/steyle.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Dropdown({
   selected = -1,
@@ -9,10 +9,14 @@ function Dropdown({
   name = "",
 }) {
   const [isActive, setIsActive] = useState(false);
+
+useEffect(()=>{
+  console.log({data});
+},[])
   return (
     <div className="dropdown">
       <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
-        {selected === -1 ? placeholder : data[selected]}
+        {selected === -1 ? placeholder : data.find((option)=>option.id==selected).name}
         <i class="bx bxs-down-arrow"></i>
       </div>
       {isActive && (
@@ -26,15 +30,16 @@ function Dropdown({
           >
             None
           </div>
-          {data.map((option, i) => (
+          {[...data,...data].map((option, i) => (
             <div
               onClick={() => {
-                setSelected({ value: i, name });
+                setSelected(option);
                 setIsActive(false);
               }}
               className="dropdown-item"
+              key={option?.id}
             >
-              {option}
+              {option.name}
             </div>
           ))}
         </div>
