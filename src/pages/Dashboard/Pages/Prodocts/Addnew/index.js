@@ -26,6 +26,7 @@ import {
     Add,
     CanacelSaveContainer,
     Cancel,
+    Iconn,
 } from "./style";
 
 function AddNewPage() {
@@ -89,6 +90,7 @@ function AddNewPage() {
         ]);
     };
 
+
     useEffect(() => {
         setMultiImageInput((elRefs) =>
             Array(images.length)
@@ -130,10 +132,10 @@ function AddNewPage() {
 
     let onSave = async () => {
         console.log({
-            category_id: selectedPartners.id,
+            category_id: selectedCategory?.id,
             price: parseInt(price),
             name: image.name,
-            description: "tandir lavash",
+            description: desc,
             image_url: image.image_url,
             profit_percent: parseInt(profit),
             expire_date: "13/11/2021 00.00.00",
@@ -142,13 +144,13 @@ function AddNewPage() {
 
         try {
             let res = await requests.products.createProduct({
-                category_id: selectedPartners.id,
-                price: price,
-                name: image.name,
-                description: "tandir lavash",
+                category_id: selectedCategory?.id,
+                price: parseFloat(price),
+                name: title,
+                description: desc,
                 image_url: image.image_url,
-                profit_percent: profit,
-                expire_date: "13/11/2021 00.00.00",
+                profit_percent: parseInt(profit),
+                expire_date: "13/11/2022 00.00.00",
                 options: images,
             });
             alert(res);
@@ -156,6 +158,10 @@ function AddNewPage() {
             alert(error);
         }
     };
+
+    const onItemDelete = (index) => {
+        setImages(images.filter((e, i) => (i !== index)))
+    }
 
     return (
         <Container>
@@ -172,8 +178,8 @@ function AddNewPage() {
                         />
                     </ImgBox>
                     <BottonContainer>
-                        <Botton onClick={onUpload}>Reset</Botton>
-                        <Botton>Upload</Botton>
+                        <Botton>Reset</Botton>
+                        <Botton onClick={onUpload}>Upload</Botton>
                     </BottonContainer>
                 </ImgContainer>
                 <InputAreContainer>
@@ -241,9 +247,9 @@ function AddNewPage() {
                         <ImageContainer>
                             <Imagee src={!!image ? img.image_url : Img} />
                             <input
-                                // style={{
-                                //     display: "none",
-                                // }}
+                                style={{
+                                    display: "none",
+                                }}
                                 ref={multiImageInput[index]}
                                 onChange={(e) => onMultiImageUpload(e, index)}
                                 type={"file"}
@@ -261,27 +267,17 @@ function AddNewPage() {
                             placeholder="name"
                             value={!!img ? img.name : ""}
                             onChange={(e) => {
-                                // let newImage = img;
-                                // newImage.name = e.target.value;
-                                let newImages = images;
-                                newImages = [
-                                    ...newImages,
-                                    {
-                                        ...newImages[index],
-                                        name: e.target.value,
-                                    },
-                                ];
+                                let newImages = images.map((image, i) => {
+                                    if (i == index) {
+                                        return { image_url: image.image_url, name: e.target.value }
+                                    }
+                                })
                                 setImages(newImages);
-                                // setImage([...images, newImage]);
-
-                                //                 let newImages = images;
-                                // newImages[index] = {
-                                //     ...newImages[index],
-                                //     image_url: `${url}/file-download/${res.data[0]}`,
-                                // };
-                                // setImages(newImages);
                             }}
                         />
+                        <Iconn onClick={() => onItemDelete(index)}>
+                            <i class="bx bx-trash"></i>
+                        </Iconn>
                     </NameImageContainer>
                 );
             })}

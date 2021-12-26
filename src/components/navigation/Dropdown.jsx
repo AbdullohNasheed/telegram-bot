@@ -10,13 +10,15 @@ function Dropdown({
 }) {
   const [isActive, setIsActive] = useState(false);
 
-useEffect(()=>{
-  console.log({data});
-},[])
+  useEffect(() => {
+    console.log({ data });
+  }, []);
   return (
     <div className="dropdown">
       <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
-        {selected === -1 ? placeholder : data.find((option)=>option.id==selected).name}
+        {selected === -1
+          ? placeholder
+          : data.find((option) => option.id == selected).name}
         <i class="bx bxs-down-arrow"></i>
       </div>
       {isActive && (
@@ -30,7 +32,7 @@ useEffect(()=>{
           >
             None
           </div>
-          {[...data,...data].map((option, i) => (
+          {data.map((option, i) => (
             <div
               onClick={() => {
                 setSelected(option);

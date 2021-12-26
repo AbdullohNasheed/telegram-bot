@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export let url = "http://192.168.221.232:8081/api";
+export let url = "http://192.168.0.102:8081/api";
 
 export let requests = {
     news: {
@@ -8,6 +8,7 @@ export let requests = {
     },
     partners: {
         getPartners: () => axios.get(`${url}/partner`),
+        addPartner: (credentials) => axios.post(`${url}/partner`, credentials)
     },
     products: {
         getProducts: () => axios.get(`${url}/product`),

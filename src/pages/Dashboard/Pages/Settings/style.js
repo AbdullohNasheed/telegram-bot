@@ -25,6 +25,7 @@ export const IconBox = styled.div`
     display: flex;
     align-items: center;
     justify-content:center;
+    margin: 9.1px 9.1px;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 20px;
@@ -35,8 +36,8 @@ export const IconBox = styled.div`
     }
 `
 export const Input = styled.input`
-    width: 94.5%;
-    height: 80%;
+    width: 92%;
+    height: 45px;
     padding-left: 10px;
     margin-left: 5px;
     outline: none;

@@ -6,9 +6,8 @@ export default function Sidebar() {
   let { path } = useRouteMatch();
   let location = useLocation();
   let isActive = (route) => {
-    return location.pathname === route
+    return location.pathname.indexOf(route) !== -1
   }
-  console.log(isActive(`${path}/dashboard`));
   return (
     <div>
 

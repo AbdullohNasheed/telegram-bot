@@ -4,6 +4,7 @@ export const Container = styled.div`
     display: flex;
     width: 95%;
     flex-direction: column;
+    min-height: 100vh;
 `;
 export const ImgContainer = styled.div`
     display: flex;
@@ -34,6 +35,20 @@ export const Icon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
+    box-shadow: -3px -3px 7px #fff, 3px 3px 5px #ceced1;
+    &:active {
+        box-shadow: 3px 3px 7px #fff, -3px -3px 5px #ceced1;
+        color: #3498db;
+    }
+`;
+export const Iconn = styled.div`
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1.3%;
     border-radius: 50%;
     box-shadow: -3px -3px 7px #fff, 3px 3px 5px #ceced1;
     &:active {
@@ -130,9 +145,8 @@ export const Inputt = styled.input`
     background: #ecf0f3;
 `;
 export const InputName = styled.input`
-    width: 85%;
+    width: 80%;
     height: 70%;
-    border-radius: 10px;
     outline: none;
     border: none;
     border-radius: 10px;
